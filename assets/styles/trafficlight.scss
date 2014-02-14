@@ -1,0 +1,107 @@
+$lightBodyWidth: 75px;
+$lightSpacing: .1*$lightBodyWidth;
+
+.trafficlight {
+  position: absolute;
+  left: 50%; top: 30%;
+  z-index: 25;
+  background: #222;
+  background-image: linear-gradient(transparent 2%, #111 2%, transparent 3%, #111 30%);
+  width: $lightBodyWidth;
+  border-radius: 20px;
+  position: relative;
+  border: solid 5px #333;
+  padding: .1*$lightBodyWidth .15*$lightBodyWidth;
+  &:before {
+    background: #222;
+    background-image: radial-gradient(#444, #000);
+    content: "";
+    width: 100%;
+    height: $lightBodyWidth;
+    margin: 0 auto;
+    position: absolute;
+    top: -(.12 * $lightBodyWidth); left: 0;
+    margin-left: 0px;
+    border-radius: 50%;
+    z-index: -1;
+  }
+}
+
+.light {
+  background: red;
+  background-image: radial-gradient(brown, transparent);
+  background-size: 5px 5px; 
+  width: 100%; // The height is set = to this with JS
+  border-radius: 50%;
+  border: dotted 2px red;
+  position: relative;
+  margin-bottom: $lightSpacing;
+  &.red {
+    @include transition(opacity .3s linear);
+    box-shadow: 
+      0 0 $lightSpacing #111 inset,
+      0 0 .5*$lightSpacing red;
+    animation: 13s red infinite;
+  }
+  &.yellow {
+    @include transition(opacity .2s linear);
+    background: yellow;
+    background-image: radial-gradient(orange, transparent);
+    border-color: yellow;
+    box-shadow: 
+      0 0 $lightSpacing #111 inset,
+      0 0 .5*$lightSpacing yellow;
+    animation: 13s yellow infinite;
+  }
+  &.green {
+    @include transition(opacity .4s linear);
+    @include transition(opacity .3s linear);
+    background: green;
+    background-image: radial-gradient(lime, transparent);
+    border-color: lime;
+    box-shadow: 
+      0 0 $lightSpacing #111 inset,
+      0 0 .5*$lightSpacing green;
+    margin-bottom: 0;
+    animation: 13s green infinite;
+  }
+  &.green, &.yellow {
+    background-size: 5px 5px; 
+    opacity: .1;
+  }
+}
+.background.moving {
+  .light {
+    &.red{ opacity: .1; }
+    &.green { opacity: 1; }
+  }
+}
+.background.transitioning {
+  .light {
+    &.red{ opacity: .1; }
+    &.yellow { opacity: 1; }
+  }
+}
+
+$protectorWidth: .35 * $lightBodyWidth;
+.protector{
+  background: transparent;
+  width: $lightBodyWidth + $protectorWidth;
+  height: 0;
+  position: absolute;
+  left: -$protectorWidth/1.45;
+  border-right: solid $protectorWidth/1.8 transparent;
+  border-left: solid $protectorWidth/1.8 transparent;
+  border-top: solid ($protectorWidth + $protectorWidth/2) #111;
+  border-radius: 10px;
+  opacity: 1;
+  z-index: -1;
+  margin-top: $lightSpacing;
+  top: 0;
+  &:nth-child(2){
+    top: 30%;
+  }
+  &:nth-child(3){
+    top: 60%;
+  }
+}

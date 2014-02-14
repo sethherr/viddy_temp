@@ -1,0 +1,134 @@
+.snow { display: none; }
+.rain { display: block;
+  &.inline { display: inline}
+}
+
+.freezing {
+  .snow { display: block;
+    &.inline { display: inline}
+  }
+  .rain { display: none; }
+}
+
+// 
+// 
+// Clouds!
+// 
+// 
+
+.clouds {
+  height: $skyHeight;
+  width: 100%;
+  position: absolute;
+  top: $cloudOffset;
+}
+
+// $firstColor: #d6f0fd;
+// $secondColor: #f2f9fe;
+$firstColor: #c3dae5;
+$secondColor: #9fbfcc;
+
+.cloud {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  width: 350px; height: 120px;
+  border-radius: 100px;
+  position: absolute;
+  background: rgb(195,218,229);
+  background: -moz-linear-gradient(top,  rgba(195,218,229,1) 0%, rgba(195,218,229,1) 39%, rgba(159,191,204,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(195,218,229,1)), color-stop(39%,rgba(195,218,229,1)), color-stop(100%,rgba(159,191,204,1)));
+  background: -webkit-linear-gradient(top,  rgba(195,218,229,1) 0%,rgba(195,218,229,1) 39%,rgba(159,191,204,1) 100%);
+  background: -o-linear-gradient(top,  rgba(195,218,229,1) 0%,rgba(195,218,229,1) 39%,rgba(159,191,204,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(195,218,229,1) 0%,rgba(195,218,229,1) 39%,rgba(159,191,204,1) 100%);
+  background: linear-gradient(to bottom,  rgba(195,218,229,1) 0%,rgba(195,218,229,1) 39%,rgba(159,191,204,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3dae5', endColorstr='#9fbfcc',GradientType=0 );
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    background: $firstColor;
+    z-index: -1
+  }
+
+  &:after {
+    width: 100px; height: 100px;
+    top: -50px; left: 50px;
+    border-radius: 100px;
+  }
+
+  &:before {
+    width: 180px; height: 100px;
+    top: -90px; right: 50px;
+    border-radius: 200px 200px 0 0;
+  }
+  &:nth-of-type(1) {
+    left: 50%;
+    top: -2%;
+    @include scale(.75);
+    opacity: 0.8;
+  }
+  &:nth-of-type(2) {
+    top: 5%;
+    left: 25%;
+    @include scale(.8);
+    opacity: 0.9;
+  }
+  &:nth-of-type(3) {
+    right: -15%;
+    top: 3%;
+    // @include scale(.9);
+    // opacity: 0.9;
+  }
+  
+}
+
+.precipitating .snow, .precipitating .rain {
+  height: $skyHeight;
+  width: 100%;
+  position: absolute;
+  top: $cloudOffset + 5%;
+  background-image: url('images/rain.png'),
+    url('images/rain2.png'),
+    url('images/rain3.png');
+  // -webkit-animation: snow 10s linear infinite;
+  // -moz-animation: snow 10s linear infinite;
+  // -ms-animation: snow 10s linear infinite;
+  // animation: snow 10s linear infinite;
+}
+
+.precipitating .snow {
+  background-image: url('images/snow.png'),
+    url('images/snow2.png'),
+    url('images/snow3.png');
+}
+
+@keyframes snow { 
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+
+  100% { background-position: 500px 1000px, 400px 400px, 300px 300px }
+}
+
+@-moz-keyframes snow { 
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+
+  100% { background-position: 500px 1000px, 400px 400px, 300px 300px }
+}
+
+@-webkit-keyframes snow { 
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+
+  50% { background-color: #b4cfe0 }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+    background-color: #6b92b9;
+  }
+}
+
+@-ms-keyframes snow { 
+  0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+
+  100% { background-position: 500px 1000px, 400px 400px, 300px 300px }
+}
+

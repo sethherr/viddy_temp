@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title lang='en'>Divvy rides by temperature</title>
+  <meta name="charset" content="utf-8"/>
+  <meta name="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta name="description" content="Divvy Rides by temperature"/>
+  <link rel="shortcut icon" href="fav.ico"/>
+  <link href="assets/site.css" media="all" rel="stylesheet" type="text/css" />
+  <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script> Disabled for now, for local development purposes -->
+  <script src="assets/scripts/jquery.js"></script>
+  <script src="assets/scripts/bootstrap-slider.js"></script>
+  <script src="assets/site.js"></script>
+  
+</head>
+<body>
+  <div class="content">
+    <div class="therm-backing">
+      <a id="actual_temp" href="#">
+        <span class="temp">69</span>
+        <span class="c">&deg;c</span>
+        <span class="f">&deg;f</span>
+      </a>
+      <div class="therm-wrap">
+        <input type="text" id="temp_input">
+        <div class="therm-bottom"></div>
+      </div>
+    </div>
+    <div class="background">
+      <span class="sky"></span>
+      <span class="ground"></span>
+      <section class="all">
+        <div class="riders"></div>
+        <div class="trafficlight">
+          <div class="protector"></div>
+          <div class="protector"></div>
+          <div class="protector"></div>
+          <div class="light red"></div>
+          <div class="light yellow"></div>
+          <div class="light green"></div>
+        </div>
+        <div class="data-display">
+          <div class="displayer">
+            Total of <strong id="total-rides">XX</strong> rides over <strong id="total-days">XX</strong> days reaching this temp
+          </div>
+          <div class="displayer">
+            <strong id="median-rides">XX</strong> rides generally
+          </div>
+        </div>
+      </section>
+      <section class="precipitating">
+        <div class="riders"></div>
+        <div class="trafficlight">
+          <div class="protector"></div>
+          <div class="protector"></div>
+          <div class="protector"></div>
+          <div class="light red"></div>
+          <div class="light yellow"></div>
+          <div class="light green"></div>
+        </div>
+        <div class="snow"></div>
+        <div class="rain"></div>
+        <div class="clouds">
+          <div class="cloud"></div>
+          <div class="cloud"></div>
+          <div class="cloud"></div>
+          <div class="cloud"></div>
+        </div>
+        <div class="data-display">
+          <div class="displayer">
+            Total of <strong id="total-rides">XX</strong> rides
+            over <strong id="total-days">XX</strong> <span class="snow inline">snowy</span><span class="rain inline">rainy</span> days
+          </div>
+          <div class="displayer">
+            <strong id="median-rides">XX</strong> rides generally
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

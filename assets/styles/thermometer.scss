@@ -1,0 +1,151 @@
+$thermFluid: rgb(231,76,60);
+$thermFluidDark: darken($thermFluid,20%);
+$bottomWidth: 65px;
+$backingWidth: 150px;
+
+$slideBorder: 2px solid rgba(#ccc,.7);
+
+
+.therm-backing {
+  // background-color: rgba(#f5f5f5,.6);
+  // box-shadow: 1px 1px 6px rgba(black,.2);
+  // border: inset 2px rgba(white,.4);
+  // border-radius: 60px;
+  margin: 80px 40px;
+  height: 500px;
+  padding: 60px 0 20px;
+  float: left;
+  position: relative;
+  width: $backingWidth;
+  z-index: 100;
+}
+
+#actual_temp {
+  text-shadow: 0 0 2px rgba(black,.3);
+  display: block;
+  position: absolute;
+  top: 1em; left: 0;
+  width: 100%;
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: $textColor;
+  span { color: $linkColor; }
+  .c { display: none;}
+  &.celsius {
+    .c { display: inline;}
+    .f { display: none; }
+  }
+  &:hover { text-decoration: underline; }
+}
+
+.therm-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 0 40% $bottomWidth;
+}
+
+.slider {
+  border-radius: $backingWidth*.1 $backingWidth*.1 0 0;
+  border: $slideBorder;
+  border-bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  z-index: 20;
+  box-shadow: inset 0 -2px 8px rgba(black,.4);
+  cursor: pointer;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20%; height: 120%;
+    box-shadow: -2px 0 6px rgba(black,.2);
+    z-index: 2;
+    background: rgba(black,.1);
+    margin-left: 70%;
+    top: -10px;
+  }
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20%; height: 300%;
+    box-shadow: 0 0 6px rgba(white,.6);
+    z-index: 2;
+    background: rgba(white,.6);
+    margin-left: 12%;
+    bottom: -1px;
+  }
+}
+
+.slider-selection {
+  border-radius: 1px 1px 0 0;
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  background: rgb(168,35,21);
+  background: -moz-linear-gradient(left,  rgba(168,35,21,1) 0%, rgba(231,76,60,1) 20%, rgba(231,76,60,1) 80%, rgba(168,35,21,1) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(168,35,21,1)), color-stop(20%,rgba(231,76,60,1)), color-stop(80%,rgba(231,76,60,1)), color-stop(100%,rgba(168,35,21,1)));
+  background: -webkit-linear-gradient(left,  rgba(168,35,21,1) 0%,rgba(231,76,60,1) 20%,rgba(231,76,60,1) 80%,rgba(168,35,21,1) 100%);
+  background: -o-linear-gradient(left,  rgba(168,35,21,1) 0%,rgba(231,76,60,1) 20%,rgba(231,76,60,1) 80%,rgba(168,35,21,1) 100%);
+  background: -ms-linear-gradient(left,  rgba(168,35,21,1) 0%,rgba(231,76,60,1) 20%,rgba(231,76,60,1) 80%,rgba(168,35,21,1) 100%);
+  background: linear-gradient(to right,  rgba(168,35,21,1) 0%,rgba(231,76,60,1) 20%,rgba(231,76,60,1) 80%,rgba(168,35,21,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a82315', endColorstr='#a82315',GradientType=1 );
+}
+
+.therm-bottom {
+  @include rotate(-45deg);
+  @include gradient-radial($thermFluid, $thermFluidDark);
+  border: $slideBorder;
+  width: $bottomWidth; height: $bottomWidth;
+  border-radius: $bottomWidth/2;
+  position: absolute;
+  bottom: 4px; left: 50%;
+  margin-left: -$bottomWidth/2;
+  z-index: 10;
+  box-shadow: inset 0 -4px 12px rgba(white,.4);
+  &:after {
+    @include rotate(170deg);
+    content: ""; display: block;
+    width: .72*$bottomWidth; 
+    height: .68*$bottomWidth;
+    position: absolute;
+    left: .05*$bottomWidth;
+    top: .055*$bottomWidth;  
+    border-radius: .36*$bottomWidth .34*$bottomWidth;
+    z-index: 11;
+    box-shadow: inset 0 -2px 8px rgba($thermFluidDark,.5);
+
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 1%, rgba(255,255,255,0) 8%, rgba(255,255,255,0.37) 24%, rgba(255,255,255,0.86) 77%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(255,255,255,0)), color-stop(8%,rgba(255,255,255,0)), color-stop(24%,rgba(255,255,255,0.37)), color-stop(77%,rgba(255,255,255,0.86)), color-stop(100%,rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 1%,rgba(255,255,255,0) 8%,rgba(255,255,255,0.37) 24%,rgba(255,255,255,0.86) 77%,rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,0) 1%,rgba(255,255,255,0) 8%,rgba(255,255,255,0.37) 24%,rgba(255,255,255,0.86) 77%,rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0) 1%,rgba(255,255,255,0) 8%,rgba(255,255,255,0.37) 24%,rgba(255,255,255,0.86) 77%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 1%,rgba(255,255,255,0) 8%,rgba(255,255,255,0.37) 24%,rgba(255,255,255,0.86) 77%,rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+  }
+}
+
+.slider-handle {
+  margin-top: -5px;
+  position: absolute;
+  width: 100%; height: 5px;
+  background-color: $thermFluidDark;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  opacity: 0.8;
+  border-radius: 4px 4px 0 0;
+}
+
+.slider {
+ display: inline-block;
+ vertical-align: middle;
+ position: relative;
+ input { display: none; }
+}
